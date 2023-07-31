@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<style>
+      body{
+             background-color:White;
+           }
+
+
+      .form{
+                   display:flex;
+                   justify-content:center;
+                   align-items:center;
+                   margin-top:100px;
+                   margin-left:40%;
+                   border:15px;
+                   border-radius:12px;
+
+                   border-radius:12px;
+                   display:block;
+                   height:750px;
+                   width:420px;
+
+              }
+      .data{
+                   display:flex;
+                   justify-content:center;
+                   align-items:center;
+
+                   border:3px none ;
+
+                   border-radius:10px;
+                   padding-left:60px;
+                   padding-top:20px;
+                   padding-bottom:40px;
+                   display:block;
+
+            }
+      input{
+             padding:5px;
+             margin:5px;
+             border-radius:10px;
+
+
+             }
+      .dep{
+             padding:5px;
+             margin:5px;
+             border-radius:10px;
+
+          }
+      h2{
+          padding:10px;
+          text-align:center;
+         }
+
+</style>
+
+
+
+
+<body>
+
+<div class="form shadow p-3 mb-5 bg-MediumSeaGreen rounded">
+    <form class="" method="post">
+
+        {% csrf_token %}
+        <div class="data">
+            <input type="text" name="name" placeholder="enter name" size="28"><br>
+            <input type="date" name="dob" placeholder="enter date of birth"><br>
+            <input type="number" name="age" placeholder="enter age"><br>
+            <input type="radio" name="gender" value="male">Male
+            <input type="radio" name="gender" value="female">Female<br>
+            <input type="number" name="phone" placeholder="enter phn number" size="28"><br>
+            <input type="email" name="email" placeholder="enter mail id" size="28"><br>
+            <textarea class="dep" name="address" rows="4" cols="28" placeholder="enter address"></textarea><br>
+
+            <label for="validationCustom03">Department:</label>
+                        <select class="dep" name="department" id="validationCustom03" onchange="ChangecatList()">
+                                <option value="">Choose... </option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Commerce">Commerce</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Physics">Physics</option>
+                               <option value="Chemistry">Chemistry</option>
+                        </select><br>
+	             <div class="invalid-feedback">
+		                Please provide a category.
+                 </div>
+
+            <label for="validationCustom04">Course:</label>
+                            <select class="dep" id="validationCustom04" name="course">
+
+                            </select><br>
+                  <div class="invalid-feedback">
+		               Please provide an activity.
+	              </div>
+
+        <label for="validationCustom03">Purpose:</label>
+                        <select class="dep" name="purpose" id="purpose">
+                                <option value="">Choose... </option>
+                                <option value="enquiry">Enquiry</option>
+                                <option value="place order">Place Order</option>
+                                <option value="return">Return</option>
+                        </select><br>
+            <label for="checkbox">Materials:</label>
+             <input type="checkbox" name="material"><label for="pen">Pen</label>
+             <input type="checkbox" name="material"><label for="note book">Note Book</label><br>
+            <input type="checkbox" name="material"><label for="exam papper">Exam Papper</label><br>
+            <input type="submit" value="Submit & Logout"><a class="link-danger" href="{% url 'sclapp:home' %}" >Go To Home</a>
+            {% for msg in messages %}
+                 <h5 class="text-dark">{{msg}}</h5>
+            {% endfor %}
+
+
+
+        </div>
+    </form>
+</div>
+
+<script src="{% static 'js/drop.js' %}"></script>
+
+</body>
+</html>
